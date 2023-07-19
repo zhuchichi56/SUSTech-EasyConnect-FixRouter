@@ -11,18 +11,16 @@
 
 1. 首先将两个文件 `fixRouter.py` 和 `EasyConnect.sh` 放在同一目录下。
 
-2. 打开 `fixRouter.py` 文件，更改 `gateway_to_delete` 变量的值，将其中的 IP 地址改成你在内网中 VPN 的 gateway 地址。
-
-3. 在 `fixRouter.py` 文件中找到如下部分：
+2. 在 `fixRouter.py` 文件中找到如下部分：
 
    ```python
    # 增加对应vpn的路由，本人要访问的机器是10.xxx.xxx.xxx，所以能访问了
-   subprocess.run(['sudo', 'route', '-n', 'add', '-net', '10.0.0.0/8', '10.21.144.10'])
+   subprocess.run(['sudo', 'route', '-n', 'add', '-net', '10.0.0.0/8', gateway])
    ```
 
-   将其中的 `10.0.0.0/8` 改成你想要加密的目标网段，`10.21.144.10` 改成上一步中删除的那个 gateway。
+   将其中的 `10.0.0.0/8` 改成你想要加密的目标网段。
 
-4. 运行 `EasyConnect.sh` 脚本：
+3. 运行 `EasyConnect.sh` 脚本：
 
    ```bash
    ./EasyConnect.sh
